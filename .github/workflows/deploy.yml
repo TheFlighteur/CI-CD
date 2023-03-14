@@ -22,9 +22,8 @@ jobs:
         run: composer install
 
       - name: Deploy
-        uses: deployphp/action@v1
+        uses: deployphp/action@master
         with:
           dep: deploy
           verbosity: -vvv
-          version: 2
           private-key: ${{ secrets.PRIVATE_KEY }}
