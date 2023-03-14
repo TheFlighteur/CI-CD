@@ -17,10 +17,6 @@ host('dev-vps.aasp30s.fr')
     ->set('remote_user', 'deployer')
     ->set('deploy_path', '~/CI-CD');
 
-task('test', function() {
-     run('ssh -vT git@github.com');
-});
-
-    // Hooks
+// Hooks
 
 after('deploy:failed', 'deploy:unlock');
