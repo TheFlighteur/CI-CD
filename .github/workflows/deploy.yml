@@ -24,5 +24,6 @@ jobs:
       - name: Deploy
         uses: deployphp/action@v1
         with:
-          dep: deploy -vvv
+          dep: deploy
+          verbosity: -vvv
           private-key: ${{ secrets.PRIVATE_KEY }}
