@@ -1,0 +1,30 @@
+name: develop server
+
+on:
+  push:
+    branches: [develop]
+
+concurrency: production_environment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: FTP Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: 89.234.180.61
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: cicd.batchman.fr/
